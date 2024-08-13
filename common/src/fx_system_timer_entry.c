@@ -334,9 +334,9 @@ UINT year;
         _fx_system_date =  ((year - FX_BASE_YEAR) << FX_YEAR_SHIFT) |
                             (month << FX_MONTH_SHIFT) | day;
 
-        /* Set the new system time.  */
+        /* Set the new system time. second add by FX_UPDATE_RATE_IN_SECONDS ,don't need to /2 ,This results in an incorrect time count*/
         _fx_system_time  =  (hour << FX_HOUR_SHIFT) |
-                            (minute << FX_MINUTE_SHIFT) | (second / 2);
+                            (minute << FX_MINUTE_SHIFT) | (second);
     }
 }
 
