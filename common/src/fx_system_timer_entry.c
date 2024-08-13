@@ -92,8 +92,8 @@ UINT year;
         month =   (_fx_system_date >> FX_MONTH_SHIFT) & FX_MONTH_MASK;
         year =    ((_fx_system_date >> FX_YEAR_SHIFT) & FX_YEAR_MASK) + FX_BASE_YEAR;
 
-        /* Now apply the "second" update.  */
-        second =  second + FX_UPDATE_RATE_IN_SECONDS;
+        /* Now apply the "second" update.  FX_UPDATE_RATE_IN_SECONDS should *2 if not when FX_UPDATE_RATE_IN_SECONDS=1 ，second/2(LINE339) =0, second add not work*/
+        second =  second + FX_UPDATE_RATE_IN_SECONDS*2;      
 
         /* Determine if we need to adjust the minute field.  */
         if (second > FX_MAXIMUM_SECOND)
